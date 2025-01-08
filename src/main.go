@@ -6,6 +6,7 @@ import (
 	"os"
 )
 
+// Die Main-Funktion der Anwendung
 func main() {
 	userID, err := services.ParseUserID(os.Args)
 	if len(os.Args) > 3 {

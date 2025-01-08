@@ -8,6 +8,15 @@ import (
 	"net/http"
 )
 
+// FetchPosts zieht sich alle Posts der JSONPlaceholder API um anschließend die Posts einer bestimmten Benutzer-ID rauszufiltern.
+//
+// Args:
+//
+//	userID (int): Die Benutzer-ID, dessen Posts abgerufen werden sollen.
+//
+// Return:
+//
+//	([]models.Post, error): Die angeforderten Posts oder ein Fehler, wenn der Abruf fehlerhaft war.
 func FetchPosts(userID int) ([]models.Post, error) {
 	response, err := http.Get("https://jsonplaceholder.typicode.com/posts")
 	if err != nil {
@@ -42,6 +51,15 @@ func FetchPosts(userID int) ([]models.Post, error) {
 	return userPosts, nil
 }
 
+// fetchComments zieht sich alle Kommentare der JSONPlaceholder API um anschließend die Kommentare einer bestimmten Post-ID rauszufiltern.
+//
+// Args:
+//
+//	postID (int): Die Post-ID, dessen Kommentare abgerufen werden sollen.
+//
+// Return:
+//
+//	([]models.Post, error): Die angeforderten Kommentare oder ein Fehler, wenn der Abruf fehlerhaft war.
 func fetchComments(postID int) ([]models.Comment, error) {
 	response, err := http.Get("https://jsonplaceholder.typicode.com/comments")
 	if err != nil {

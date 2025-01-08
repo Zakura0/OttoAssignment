@@ -4,6 +4,7 @@ import (
 	"OttoAssignment/src/models"
 	"fmt"
 	"strconv"
+	"strings"
 )
 
 func ParseUserID(args []string) (int, error) {
@@ -24,10 +25,29 @@ func ParseUserID(args []string) (int, error) {
 	return userID, nil
 }
 
-func PrintPosts(userID int, posts []models.Post) {
-	fmt.Printf("Fetching posts for user ID: %d\n\n", userID)
+var Color = "\033[32m"
+var Reset = "\033[0m"
+
+func PrintPosts(userID int, posts []models.Post, filter string) {
+	switchColor := true
 	for _, post := range posts {
-		fmt.Printf("Post ID: %d\nTitle: %s\n", post.ID, post.Title)
-		fmt.Printf("Body: %s\n\n", post.Body)
+		fmt.Printf("Post ID: %d\nTitle: %s\n\n", post.ID, post.Title)
+		fmt.Printf("%s\n\n", post.Body)
+		for _, comment := range post.Comments {
+			if switchColor {
+				Color = "\033[93m"
+			} else {
+				Color = "\033[33m"
+			}
+			if filter != "" {
+				if strings.Contains(comment.Body, filter) {
+					fmt.Printf(Color+"Author: %s \nTitle: %s \n\n%s \n\n", comment.Email, comment.Name, comment.Body+Reset)
+				}
+			} else {
+				fmt.Printf(Color+"Author: %s \nTitle: %s \n\n%s \n\n", comment.Email, comment.Name, comment.Body+Reset)
+
+			}
+			switchColor = !switchColor
+		}
 	}
 }

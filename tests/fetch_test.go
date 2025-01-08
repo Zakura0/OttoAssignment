@@ -22,9 +22,11 @@ func TestFetchPosts(t *testing.T) {
 			t.Errorf("expected userID %d, got %d", userID, post.UserID)
 		}
 	}
+}
 
-	userID = -1
-	posts, err = services.FetchPosts(userID)
+func TestFetchPostsNegative(t *testing.T) {
+	userID := 100
+	posts, err := services.FetchPosts(userID)
 	if err == nil {
 		t.Fatalf("expected error, got none")
 	}

@@ -2,10 +2,11 @@ package models
 
 // Post repräsentiert einen Beitrag eines Nutzers
 type Post struct {
-	UserID int    `json:"userId"`
-	ID     int    `json:"id"`
-	Title  string `json:"title"`
-	Body   string `json:"body"`
+	UserID   int    `json:"userId"`
+	ID       int    `json:"id"`
+	Title    string `json:"title"`
+	Body     string `json:"body"`
+	Comments []Comment
 }
 
 // Comment repräsentiert einen Kommentar zu einem Beitrag

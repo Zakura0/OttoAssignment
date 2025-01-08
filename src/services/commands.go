@@ -70,5 +70,6 @@ func PrintPosts(userID int, posts []models.Post, filter string) {
 			}
 			switchColor = !switchColor
 		}
+		fmt.Printf("-----------------------------------------------------------------------------\n")
 	}
 }

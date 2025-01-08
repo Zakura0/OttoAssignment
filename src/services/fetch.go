@@ -59,7 +59,7 @@ func FetchPosts(userID int) ([]models.Post, error) {
 //
 // Return:
 //
-//	([]models.Post, error): Die angeforderten Kommentare oder ein Fehler, wenn der Abruf fehlerhaft war.
+//	([]models.Comment, error): Die angeforderten Kommentare oder ein Fehler, wenn der Abruf fehlerhaft war.
 func fetchComments(postID int) ([]models.Comment, error) {
 	response, err := http.Get("https://jsonplaceholder.typicode.com/comments")
 	if err != nil {

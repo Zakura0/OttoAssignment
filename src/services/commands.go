@@ -20,7 +20,7 @@ import (
 //	(int, error): Die analysierte Benutzer-ID oder ein Fehler, wenn die Benutzer-ID ungültig ist.
 func ParseUserID(args []string) (int, error) {
 	if len(args) < 2 {
-		return 0, fmt.Errorf("usage: go run main.go <userID>")
+		return 0, fmt.Errorf("usage: main.exe <userID> <filter>")
 	}
 
 	userID64, err := strconv.ParseInt(args[1], 10, 0)
@@ -61,6 +61,8 @@ func PrintPosts(userID int, posts []models.Post, filter string) {
 			if filter != "" {
 				if strings.Contains(comment.Body, filter) {
 					fmt.Printf(Color+"Author: %s \nTitle: %s \n\n%s \n\n", comment.Email, comment.Name, comment.Body+Reset)
+				} else {
+					continue
 				}
 			} else {
 				fmt.Printf(Color+"Author: %s \nTitle: %s \n\n%s \n\n", comment.Email, comment.Name, comment.Body+Reset)

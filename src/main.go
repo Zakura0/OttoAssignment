@@ -10,7 +10,7 @@ import (
 func main() {
 	userID, err := services.ParseUserID(os.Args)
 	if len(os.Args) > 3 {
-		fmt.Printf("Invalid arguments\nUsage: go run main.go <userID> <filter>")
+		fmt.Printf("Invalid arguments\nUsage: main.exe <userID> <filter>")
 		return
 	}
 	filter := ""

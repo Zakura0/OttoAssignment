@@ -1,6 +1,6 @@
 package models
 
-// Post repräsentiert einen Beitrag eines Nutzers
+/*Post repräsentiert einen Beitrag eines Nutzers*/
 type Post struct {
 	UserID   int    `json:"userId"`
 	ID       int    `json:"id"`
@@ -9,7 +9,7 @@ type Post struct {
 	Comments []Comment
 }
 
-// Comment repräsentiert einen Kommentar zu einem Beitrag. Jeder Post hat eine ID, welche mit der PostID der Comments korrespondiert.
+/*Comment repräsentiert einen Kommentar zu einem Beitrag. Jeder Post hat eine ID, welche mit der PostID der Comments korrespondiert.*/
 type Comment struct {
 	PostID int    `json:"postId"`
 	ID     int    `json:"id"`

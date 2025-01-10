@@ -37,7 +37,7 @@ func FetchPosts(userID int) ([]models.Post, error) {
 		return nil, fmt.Errorf("error unmarshaling of JSON-Files: %v", err)
 	}
 
-	fmt.Printf("Fetching posts for user ID: %d\n\n", userID)
+	fmt.Printf("Fetching posts for user ID %d...\n\n", userID)
 
 	var userPosts []models.Post
 	for _, post := range posts {

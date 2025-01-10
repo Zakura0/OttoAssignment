@@ -50,20 +50,23 @@ Args:
 	filter (string): Der anzuwendende Filter.
 */
 func PrintPosts(userID int, posts []models.Post, filter string) {
-	var Color = "\033[32m"
+	var Color = ""
 	var Reset = "\033[0m"
 	switchColor := true
 	for _, post := range posts {
-		fmt.Printf("User ID: %d\nPost ID: %d\nTitle: %s\n\n", post.UserID, post.ID, post.Title)
+		var Underline = "\033[4;37m"
+		fmt.Printf("User ID: %d\nPost ID: %d\n"+Underline+"%s\n\n"+Reset, post.UserID, post.ID, post.Title)
 		fmt.Printf("%s\n\n", post.Body)
 		for _, comment := range post.Comments {
 			if switchColor {
-				Color = "\033[93m"
+				Color = "\033[36m"
+				Underline = "\033[4;36m"
 			} else {
-				Color = "\033[33m"
+				Color = "\033[96m"
+				Underline = "\033[4;96m"
 			}
 			if filter == "" || strings.Contains(comment.Body, filter) {
-				fmt.Printf(Color+"Author: %s \nTitle: %s \n\n%s \n\n", comment.Email, comment.Name, comment.Body+Reset)
+				fmt.Printf(Color+"By: %s\n"+Underline+"%s \n\n"+Reset+Color+"%s \n\n"+Reset, comment.Email, comment.Name, comment.Body)
 			}
 			switchColor = !switchColor
 		}
